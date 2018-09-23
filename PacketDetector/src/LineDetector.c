@@ -6,22 +6,34 @@
  */
 #include "GPIO.h"
 #include "LED_Driver.h"
+#include "DataLineTimer.h"
+
+static currentState_t currentState;
+
+void EXTI1_IRQHandler (void)
+{
+    //clear flags
+    *(EXTI_PR) &= ~(0x20);
+
+    if((*(GPIOA_IDR) & 0b10) == 0b10)
+    		{
+    			set_All_LEDS();
+    		}
+    		else
+    		{
+    			clear_LEDS();
+    		}
+}
 
 int main(){
 	init_led_pins();
 	init_input_pin();
-	set_All_LEDS();
-	while(1)
-	{
-		if((*(GPIOA_IDR) & 0b10) == 0b10)
-		{
-			set_All_LEDS();
-		}
-		else
-		{
-			clear_LEDS();
-		}
-	}
+	//set_All_LEDS();
+
+	EXTI_Config();
+
+
+	while(1){}
 }
 
 void init_input_pin()
