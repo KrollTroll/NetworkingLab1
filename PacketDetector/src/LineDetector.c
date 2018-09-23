@@ -8,27 +8,36 @@
 #include "LED_Driver.h"
 #include "DataLineTimer.h"
 
-static currentState_t currentState;
+static volatile currentState_t currentState;
 
 void EXTI1_IRQHandler (void)
 {
     //clear flags
     *(EXTI_PR) &= ~(0x20);
 
-    if((*(GPIOA_IDR) & 0b10) == 0b10)
-    		{
-    			set_All_LEDS();
-    		}
-    		else
-    		{
-    			clear_LEDS();
-    		}
+    switch(currentState)
+        {
+            case IDLE:
+            	clear_LEDS();
+            	currentState = BUSY;
+            	set_LED('y');
+                break;
+            case BUSY:
+                break;
+            default:
+            	clear_LEDS();
+            	currentState = BUSY;
+            	set_LED('y');
+                break;
+        }
 }
 
 int main(){
 	init_led_pins();
 	init_input_pin();
-	//set_All_LEDS();
+
+	currentState = IDLE;
+	set_LED('g');
 
 	EXTI_Config();
 
