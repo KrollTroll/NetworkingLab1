@@ -13,13 +13,8 @@ void TIM4_Config()
     //TIM4 INITIALIZATION
     *(RCC_APB1ENR) |= (1<<TIM4EN);
 
-    //load ARR with value for 1ms time
-    *(TIM4_ARR) |= delay_ms* 100;
-
     //enable interrupt
     *(TIM4_DIER) |= (1);
-    //enable timer
-    *(TIM4_CR1) |= (1);
 
     //enable TIM4 interrupt in NVIC
     *(NVIC_ISER0) |= (1 << TIM4_ISREN);

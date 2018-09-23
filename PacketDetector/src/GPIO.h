@@ -6,7 +6,7 @@
 
 //RCC Registers
 #define RCC_AHB1ENR (volatile uint32_t*) 0x40023830
-#define RCC_APB1ENR (volatile uint32_t*) 0x20023840
+#define RCC_APB1ENR (volatile uint32_t*) 0x40023840
 #define RCC_APB2ENR (volatile uint32_t*) 0x40023844
 
 #define GPIOAEN 0
