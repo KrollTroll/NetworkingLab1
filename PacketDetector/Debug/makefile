@@ -30,10 +30,10 @@ endif
 all: PacketDetector.elf
 
 # Tool invocations
-PacketDetector.elf: $(OBJS) $(USER_OBJS) C:\Users\krollcj\Documents\CE\ 4951\ -\ Networking\ I\Dev\PacketDetector\LinkerScript.ld
+PacketDetector.elf: $(OBJS) $(USER_OBJS) C:\Users\krollcj\Documents\CE\ 4951\ -\ Networking\ I\Dev\NetworkingLab1\PacketDetector\LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\Users\krollcj\Documents\CE 4951 - Networking I\Dev\PacketDetector\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "PacketDetector.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\Users\krollcj\Documents\CE 4951 - Networking I\Dev\NetworkingLab1\PacketDetector\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "PacketDetector.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
