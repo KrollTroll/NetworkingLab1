@@ -13,12 +13,10 @@
 // GPIOA registers
 #define GPIOA_MODER (volatile uint32_t*) 0x40020000
 #define GPIOA_ODR (volatile uint32_t*) 0x40020014
+#define GPIOA_IDR (volatile uint32_t*) 0x40020010
 
 //GPIOB registers
 #define GPIOB_MODER (volatile uint32_t*) 0x40020400
 #define GPIOB_ODR (volatile uint32_t*) 0x40020414
-
-//LED initializer method
-void init_led();
 
 #endif /* GPIO_H_ */

@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/LED_Driver.c \
 ../src/LineDetector.c 
 
 OBJS += \
+./src/LED_Driver.o \
 ./src/LineDetector.o 
 
 C_DEPS += \
+./src/LED_Driver.d \
 ./src/LineDetector.d 
 
 
